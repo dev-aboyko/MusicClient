@@ -14,6 +14,7 @@
 		77C53A7C1B0D77B600378321 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77C53A7A1B0D77B600378321 /* LaunchScreen.xib */; };
 		77C53A881B0D77B600378321 /* MusicClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C53A871B0D77B600378321 /* MusicClientTests.m */; };
 		77C53A931B0D7A0500378321 /* MusicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C53A921B0D7A0500378321 /* MusicTableViewController.m */; };
+		77C53A961B0D7AAF00378321 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C53A951B0D7AAF00378321 /* APIClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		77C53A871B0D77B600378321 /* MusicClientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MusicClientTests.m; sourceTree = "<group>"; };
 		77C53A911B0D7A0500378321 /* MusicTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicTableViewController.h; sourceTree = "<group>"; };
 		77C53A921B0D7A0500378321 /* MusicTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicTableViewController.m; sourceTree = "<group>"; };
+		77C53A941B0D7AAF00378321 /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
+		77C53A951B0D7AAF00378321 /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,8 @@
 				77C53A6B1B0D77B600378321 /* Supporting Files */,
 				77C53A911B0D7A0500378321 /* MusicTableViewController.h */,
 				77C53A921B0D7A0500378321 /* MusicTableViewController.m */,
+				77C53A941B0D7AAF00378321 /* APIClient.h */,
+				77C53A951B0D7AAF00378321 /* APIClient.m */,
 			);
 			path = MusicClient;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 				77C53A931B0D7A0500378321 /* MusicTableViewController.m in Sources */,
 				77C53A711B0D77B600378321 /* AppDelegate.m in Sources */,
 				77C53A6E1B0D77B600378321 /* main.m in Sources */,
+				77C53A961B0D7AAF00378321 /* APIClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,7 +349,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = NewLaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = MusicClient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -355,7 +361,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = NewLaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = MusicClient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

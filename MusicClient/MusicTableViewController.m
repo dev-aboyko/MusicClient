@@ -7,16 +7,22 @@
 //
 
 #import "MusicTableViewController.h"
+#import "APIClient.h"
 
-@interface MusicTableViewController ()
+@interface MusicTableViewController ()<UITableViewDataSource, APIClientDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) APIClient* apiClient;
 
 @end
 
 @implementation MusicTableViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    
+    _apiClient = [[APIClient alloc] initWithDelegate:self];
+    _tableView.dataSource = self;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -29,29 +35,31 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - API client delegate
+
+- (void)onReceiveNewMelodies
+{
+    NSLog(@"On receive new melodies");
+    [self.tableView reloadData];
+}
+
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     // Return the number of rows in the section.
-    return 0;
+    NSLog(@"requesting number of rows");
+    return _apiClient.melodiesCount;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Song cell" forIndexPath:indexPath];
+    NSDictionary* melody = [_apiClient melodyForIndex:indexPath.row];
+    cell.textLabel.text = [melody objectForKey:@"title"];
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
