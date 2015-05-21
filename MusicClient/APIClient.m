@@ -7,6 +7,7 @@
 //
 
 #import "APIClient.h"
+#import "UIAlertView+showAlert.h"
 
 NSString* const APIURL = @"http://api.content.mts.intech-global.com/public/marketplaces/10/tags/12/melodies";
 
@@ -60,11 +61,18 @@ NSString* const APIURL = @"http://api.content.mts.intech-global.com/public/marke
     
     NSURL* url = [NSURL URLWithString:requestString];
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
-#warning todo: process connection error
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:self.queue
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                               [self appendReceivedData:data from:from];
+                               if (connectionError == nil)
+                               {
+                                   [self appendReceivedData:data from:from];
+                               }
+                               else
+                               {
+                                   NSString* errorString = [NSString stringWithFormat:@"%@", connectionError];
+                                   [UIAlertView showAlert:errorString];
+                               }
                                self.requestInProgress = NO;
                            }];
 }

@@ -18,6 +18,7 @@
 		77C53A991B0DCD4000378321 /* MusicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C53A981B0DCD4000378321 /* MusicTableViewCell.m */; };
 		77C53A9C1B0DD20C00378321 /* UIImageView+Downoad.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C53A9B1B0DD20C00378321 /* UIImageView+Downoad.m */; };
 		77C53A9F1B0DD55800378321 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C53A9E1B0DD55800378321 /* AudioPlayer.m */; };
+		77C53AA41B0DFD9500378321 /* UIAlertView+showAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C53AA31B0DFD9500378321 /* UIAlertView+showAlert.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		77C53A9D1B0DD55800378321 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
 		77C53A9E1B0DD55800378321 /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
 		77C53AA01B0DD84000378321 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		77C53AA21B0DFD9500378321 /* UIAlertView+showAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+showAlert.h"; sourceTree = "<group>"; };
+		77C53AA31B0DFD9500378321 /* UIAlertView+showAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+showAlert.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,22 +98,12 @@
 		77C53A6A1B0D77B600378321 /* MusicClient */ = {
 			isa = PBXGroup;
 			children = (
-				77C53A6F1B0D77B600378321 /* AppDelegate.h */,
-				77C53A701B0D77B600378321 /* AppDelegate.m */,
-				77C53A751B0D77B600378321 /* Main.storyboard */,
-				77C53A781B0D77B600378321 /* Images.xcassets */,
-				77C53A7A1B0D77B600378321 /* LaunchScreen.xib */,
+				77C53AA81B0DFE1000378321 /* UI */,
+				77C53AA71B0DFDF800378321 /* APIClient */,
+				77C53AA61B0DFDEE00378321 /* AudioPlayer */,
+				77C53AA51B0DFDBF00378321 /* Categories */,
+				77C53AA91B0DFE3400378321 /* AppDelegate */,
 				77C53A6B1B0D77B600378321 /* Supporting Files */,
-				77C53A911B0D7A0500378321 /* MusicTableViewController.h */,
-				77C53A921B0D7A0500378321 /* MusicTableViewController.m */,
-				77C53A941B0D7AAF00378321 /* APIClient.h */,
-				77C53A951B0D7AAF00378321 /* APIClient.m */,
-				77C53A971B0DCD4000378321 /* MusicTableViewCell.h */,
-				77C53A981B0DCD4000378321 /* MusicTableViewCell.m */,
-				77C53A9A1B0DD20C00378321 /* UIImageView+Downoad.h */,
-				77C53A9B1B0DD20C00378321 /* UIImageView+Downoad.m */,
-				77C53A9D1B0DD55800378321 /* AudioPlayer.h */,
-				77C53A9E1B0DD55800378321 /* AudioPlayer.m */,
 			);
 			path = MusicClient;
 			sourceTree = "<group>";
@@ -139,6 +132,58 @@
 				77C53A861B0D77B600378321 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		77C53AA51B0DFDBF00378321 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				77C53A9A1B0DD20C00378321 /* UIImageView+Downoad.h */,
+				77C53A9B1B0DD20C00378321 /* UIImageView+Downoad.m */,
+				77C53AA21B0DFD9500378321 /* UIAlertView+showAlert.h */,
+				77C53AA31B0DFD9500378321 /* UIAlertView+showAlert.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		77C53AA61B0DFDEE00378321 /* AudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				77C53A9D1B0DD55800378321 /* AudioPlayer.h */,
+				77C53A9E1B0DD55800378321 /* AudioPlayer.m */,
+			);
+			name = AudioPlayer;
+			sourceTree = "<group>";
+		};
+		77C53AA71B0DFDF800378321 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				77C53A941B0D7AAF00378321 /* APIClient.h */,
+				77C53A951B0D7AAF00378321 /* APIClient.m */,
+			);
+			name = APIClient;
+			sourceTree = "<group>";
+		};
+		77C53AA81B0DFE1000378321 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				77C53A911B0D7A0500378321 /* MusicTableViewController.h */,
+				77C53A921B0D7A0500378321 /* MusicTableViewController.m */,
+				77C53A971B0DCD4000378321 /* MusicTableViewCell.h */,
+				77C53A981B0DCD4000378321 /* MusicTableViewCell.m */,
+				77C53A751B0D77B600378321 /* Main.storyboard */,
+				77C53A781B0D77B600378321 /* Images.xcassets */,
+				77C53A7A1B0D77B600378321 /* LaunchScreen.xib */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		77C53AA91B0DFE3400378321 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				77C53A6F1B0D77B600378321 /* AppDelegate.h */,
+				77C53A701B0D77B600378321 /* AppDelegate.m */,
+			);
+			name = AppDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +293,7 @@
 				77C53A9C1B0DD20C00378321 /* UIImageView+Downoad.m in Sources */,
 				77C53A6E1B0D77B600378321 /* main.m in Sources */,
 				77C53A961B0D7AAF00378321 /* APIClient.m in Sources */,
+				77C53AA41B0DFD9500378321 /* UIAlertView+showAlert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
