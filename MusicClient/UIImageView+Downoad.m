@@ -11,6 +11,7 @@
 
 - (void)downloadImageWithURLstring:(NSString*)urlString
 {
+    self.image = nil;
     NSURL* url = [NSURL URLWithString:urlString];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request

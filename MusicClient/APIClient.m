@@ -10,6 +10,7 @@
 #import "UIAlertView+showAlert.h"
 
 NSString* const APIURL = @"http://api.content.mts.intech-global.com/public/marketplaces/10/tags/12/melodies";
+NSInteger requestLimit = 20;
 
 @interface APIClient ()
 
@@ -54,11 +55,8 @@ NSString* const APIURL = @"http://api.content.mts.intech-global.com/public/marke
     if (self.requestInProgress)
         return;
     self.requestInProgress = YES;
-    NSLog(@"requesting melodies from %ld", (unsigned long)from);
-    const NSInteger limit = 200;
     
-    NSString* requestString = [NSString stringWithFormat:@"%@?limit=%ld&from=%ld", APIURL, (long)limit, (long)from];
-    
+    NSString* requestString = [NSString stringWithFormat:@"%@?limit=%ld&from=%ld", APIURL, (long)requestLimit, (long)from];
     NSURL* url = [NSURL URLWithString:requestString];
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request
@@ -79,12 +77,10 @@ NSString* const APIURL = @"http://api.content.mts.intech-global.com/public/marke
 
 - (void)appendReceivedData:(NSData*)data from:(NSInteger)from
 {
-    NSLog(@"received data length %lu", (unsigned long)data.length);
     NSError* error = nil;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
     NSArray* melodies = [json objectForKey:@"melodies"];
     self.melodies = [self.melodies arrayByAddingObjectsFromArray:melodies];
-    NSLog(@"_melodies count %ld", (unsigned long)self.melodies.count);
     [self performSelectorOnMainThread:@selector(notifyDelegateOnNewMelodies) withObject:nil waitUntilDone:NO];
 }
 
