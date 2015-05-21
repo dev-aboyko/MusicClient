@@ -7,6 +7,7 @@
 //
 
 #import "MusicTableViewController.h"
+#import "MusicTableViewCell.h"
 #import "APIClient.h"
 
 @interface MusicTableViewController ()<UITableViewDataSource, APIClientDelegate>
@@ -54,9 +55,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Song cell" forIndexPath:indexPath];
+    MusicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Song cell" forIndexPath:indexPath];
     NSDictionary* melody = [_apiClient melodyForIndex:indexPath.row];
-    cell.textLabel.text = [melody objectForKey:@"title"];
+    [cell setMelody:melody];;
     return cell;
 }
 

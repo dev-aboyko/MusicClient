@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Music Table View Controller-->
@@ -17,23 +18,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Hye-0e-EDb">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Hye-0e-EDb">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Song cell" textLabel="FhY-8h-kBz" style="IBUITableViewCellStyleDefault" id="yqm-Sm-0Zv">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Song cell" id="yqm-Sm-0Zv" customClass="MusicTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yqm-Sm-0Zv" id="4Hw-hP-ElT">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FhY-8h-kBz">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VTZ-fM-VeT" userLabel="Album Cover">
+                                                    <rect key="frame" x="0.0" y="0.0" width="87" height="87"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="87" id="1tD-tW-Cwv"/>
+                                                        <constraint firstAttribute="height" constant="87" id="qBn-Ys-WfP"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fyn-Y2-epO" userLabel="Artist">
+                                                    <rect key="frame" x="95" y="49" width="443" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="U7P-RA-iWw"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdu-gG-qVT" userLabel="Play">
+                                                    <rect key="frame" x="546" y="5" width="46" height="78"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="78" id="K2o-qT-iWV"/>
+                                                        <constraint firstAttribute="width" constant="46" id="f9B-RC-7pY"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="onPlayButton:" destination="yqm-Sm-0Zv" eventType="touchUpInside" id="5ue-uJ-s4E"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uNQ-tt-bKS" userLabel="Title">
+                                                    <rect key="frame" x="95" y="16" width="443" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Y03-EA-0cp"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="uNQ-tt-bKS" firstAttribute="leading" secondItem="VTZ-fM-VeT" secondAttribute="trailing" constant="8" id="7Fq-Q9-57P"/>
+                                                <constraint firstAttribute="trailing" secondItem="xdu-gG-qVT" secondAttribute="trailing" constant="8" id="8hc-Pa-1EV"/>
+                                                <constraint firstAttribute="bottom" secondItem="Fyn-Y2-epO" secondAttribute="bottom" constant="8" id="Cxw-he-9Fc"/>
+                                                <constraint firstItem="VTZ-fM-VeT" firstAttribute="leading" secondItem="4Hw-hP-ElT" secondAttribute="leading" id="IIS-a9-NPG"/>
+                                                <constraint firstItem="xdu-gG-qVT" firstAttribute="leading" secondItem="uNQ-tt-bKS" secondAttribute="trailing" constant="8" id="L1S-NY-Y2y"/>
+                                                <constraint firstAttribute="centerY" secondItem="VTZ-fM-VeT" secondAttribute="centerY" id="LSp-af-KdL"/>
+                                                <constraint firstItem="xdu-gG-qVT" firstAttribute="leading" secondItem="Fyn-Y2-epO" secondAttribute="trailing" constant="8" id="aLw-ww-TXd"/>
+                                                <constraint firstItem="Fyn-Y2-epO" firstAttribute="leading" secondItem="VTZ-fM-VeT" secondAttribute="trailing" constant="8" id="fyx-vm-vss"/>
+                                                <constraint firstItem="uNQ-tt-bKS" firstAttribute="top" secondItem="4Hw-hP-ElT" secondAttribute="topMargin" constant="8" id="q5k-zS-god"/>
+                                                <constraint firstAttribute="centerY" secondItem="xdu-gG-qVT" secondAttribute="centerY" id="v4Z-W3-WKN"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="albumCover" destination="VTZ-fM-VeT" id="N8g-sG-EmA"/>
+                                            <outlet property="artist" destination="Fyn-Y2-epO" id="S3A-Lc-x2t"/>
+                                            <outlet property="title" destination="uNQ-tt-bKS" id="VD4-wy-iFu"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -52,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pxq-Pg-E0G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="380" y="360"/>
+            <point key="canvasLocation" x="380" y="357"/>
         </scene>
     </scenes>
 </document>

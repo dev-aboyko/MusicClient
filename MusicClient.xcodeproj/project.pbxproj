@@ -15,6 +15,8 @@
 		77C53A881B0D77B600378321 /* MusicClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C53A871B0D77B600378321 /* MusicClientTests.m */; };
 		77C53A931B0D7A0500378321 /* MusicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C53A921B0D7A0500378321 /* MusicTableViewController.m */; };
 		77C53A961B0D7AAF00378321 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C53A951B0D7AAF00378321 /* APIClient.m */; };
+		77C53A991B0DCD4000378321 /* MusicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C53A981B0DCD4000378321 /* MusicTableViewCell.m */; };
+		77C53A9C1B0DD20C00378321 /* UIImageView+Downoad.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C53A9B1B0DD20C00378321 /* UIImageView+Downoad.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,10 @@
 		77C53A921B0D7A0500378321 /* MusicTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicTableViewController.m; sourceTree = "<group>"; };
 		77C53A941B0D7AAF00378321 /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
 		77C53A951B0D7AAF00378321 /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
+		77C53A971B0DCD4000378321 /* MusicTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicTableViewCell.h; sourceTree = "<group>"; };
+		77C53A981B0DCD4000378321 /* MusicTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicTableViewCell.m; sourceTree = "<group>"; };
+		77C53A9A1B0DD20C00378321 /* UIImageView+Downoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Downoad.h"; sourceTree = "<group>"; };
+		77C53A9B1B0DD20C00378321 /* UIImageView+Downoad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Downoad.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,10 @@
 				77C53A921B0D7A0500378321 /* MusicTableViewController.m */,
 				77C53A941B0D7AAF00378321 /* APIClient.h */,
 				77C53A951B0D7AAF00378321 /* APIClient.m */,
+				77C53A971B0DCD4000378321 /* MusicTableViewCell.h */,
+				77C53A981B0DCD4000378321 /* MusicTableViewCell.m */,
+				77C53A9A1B0DD20C00378321 /* UIImageView+Downoad.h */,
+				77C53A9B1B0DD20C00378321 /* UIImageView+Downoad.m */,
 			);
 			path = MusicClient;
 			sourceTree = "<group>";
@@ -225,7 +235,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				77C53A931B0D7A0500378321 /* MusicTableViewController.m in Sources */,
+				77C53A991B0DCD4000378321 /* MusicTableViewCell.m in Sources */,
 				77C53A711B0D77B600378321 /* AppDelegate.m in Sources */,
+				77C53A9C1B0DD20C00378321 /* UIImageView+Downoad.m in Sources */,
 				77C53A6E1B0D77B600378321 /* main.m in Sources */,
 				77C53A961B0D7AAF00378321 /* APIClient.m in Sources */,
 			);
