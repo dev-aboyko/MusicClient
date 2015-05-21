@@ -9,8 +9,9 @@
 #import "MusicTableViewController.h"
 #import "MusicTableViewCell.h"
 #import "APIClient.h"
+#import "AudioPlayer.h"
 
-@interface MusicTableViewController ()<UITableViewDataSource, APIClientDelegate>
+@interface MusicTableViewController ()<UITableViewDataSource, UITableViewDelegate, APIClientDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) APIClient* apiClient;
@@ -24,6 +25,7 @@
     [super viewDidLoad];
     _apiClient = [[APIClient alloc] initWithDelegate:self];
     _tableView.dataSource = self;
+    _tableView.delegate = self;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -61,6 +63,21 @@
     return cell;
 }
 
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"did select %ld", (long)indexPath.row);
+    
+    NSDictionary* melody = [_apiClient melodyForIndex:indexPath.row];
+    NSString* audioURL = [melody objectForKey:@"demoUrl"];
+    [[AudioPlayer sharedInstance] playURL:audioURL];
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"did deselect %ld", (long)indexPath.row);
+}
 
 /*
 // Override to support conditional editing of the table view.

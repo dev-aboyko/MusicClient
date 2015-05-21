@@ -12,4 +12,6 @@
 
 - (void)setMelody:(NSDictionary*)melody;
 
+@property (nonatomic, strong) NSString* demoURL;
+
 @end

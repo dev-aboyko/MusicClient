@@ -10,9 +10,6 @@
 #import "UIImageView+Downoad.h"
 
 @interface MusicTableViewCell()
-{
-    NSString* _demoURL;
-}
 
 @property (weak, nonatomic) IBOutlet UIImageView *albumCover;
 @property (weak, nonatomic) IBOutlet UILabel *title;
@@ -39,11 +36,6 @@
     NSString* picURL = [melody objectForKey:@"picUrl"];
     [_albumCover downloadImageWithURLstring:picURL];
     _demoURL = [melody objectForKey:@"demoUrl"];
-}
-
-- (IBAction)onPlayButton:(id)sender
-{
-    NSLog(@"on play button");
 }
 
 @end

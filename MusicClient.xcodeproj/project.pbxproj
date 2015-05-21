@@ -17,6 +17,7 @@
 		77C53A961B0D7AAF00378321 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C53A951B0D7AAF00378321 /* APIClient.m */; };
 		77C53A991B0DCD4000378321 /* MusicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C53A981B0DCD4000378321 /* MusicTableViewCell.m */; };
 		77C53A9C1B0DD20C00378321 /* UIImageView+Downoad.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C53A9B1B0DD20C00378321 /* UIImageView+Downoad.m */; };
+		77C53A9F1B0DD55800378321 /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C53A9E1B0DD55800378321 /* AudioPlayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,9 @@
 		77C53A981B0DCD4000378321 /* MusicTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicTableViewCell.m; sourceTree = "<group>"; };
 		77C53A9A1B0DD20C00378321 /* UIImageView+Downoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Downoad.h"; sourceTree = "<group>"; };
 		77C53A9B1B0DD20C00378321 /* UIImageView+Downoad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Downoad.m"; sourceTree = "<group>"; };
+		77C53A9D1B0DD55800378321 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
+		77C53A9E1B0DD55800378321 /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
+		77C53AA01B0DD84000378321 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,7 @@
 		77C53A5F1B0D77B600378321 = {
 			isa = PBXGroup;
 			children = (
+				77C53AA01B0DD84000378321 /* AVFoundation.framework */,
 				77C53A6A1B0D77B600378321 /* MusicClient */,
 				77C53A841B0D77B600378321 /* MusicClientTests */,
 				77C53A691B0D77B600378321 /* Products */,
@@ -104,6 +109,8 @@
 				77C53A981B0DCD4000378321 /* MusicTableViewCell.m */,
 				77C53A9A1B0DD20C00378321 /* UIImageView+Downoad.h */,
 				77C53A9B1B0DD20C00378321 /* UIImageView+Downoad.m */,
+				77C53A9D1B0DD55800378321 /* AudioPlayer.h */,
+				77C53A9E1B0DD55800378321 /* AudioPlayer.m */,
 			);
 			path = MusicClient;
 			sourceTree = "<group>";
@@ -236,6 +243,7 @@
 			files = (
 				77C53A931B0D7A0500378321 /* MusicTableViewController.m in Sources */,
 				77C53A991B0DCD4000378321 /* MusicTableViewCell.m in Sources */,
+				77C53A9F1B0DD55800378321 /* AudioPlayer.m in Sources */,
 				77C53A711B0D77B600378321 /* AppDelegate.m in Sources */,
 				77C53A9C1B0DD20C00378321 /* UIImageView+Downoad.m in Sources */,
 				77C53A6E1B0D77B600378321 /* main.m in Sources */,
