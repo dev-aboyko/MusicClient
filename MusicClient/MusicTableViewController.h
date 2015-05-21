@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MusicTableViewController.h
 //  MusicClient
 //
 //  Created by Alexey Boyko on 21.05.15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MusicTableViewController : UITableViewController
 
 @end
-
