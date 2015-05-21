@@ -15,6 +15,7 @@ NSString* const APIURL = @"http://api.content.mts.intech-global.com/public/marke
 @property (nonatomic, weak) id<APIClientDelegate> delegate;
 @property (nonatomic, strong) NSOperationQueue* queue;
 @property (atomic, strong) NSArray* melodies;
+@property (atomic) BOOL requestInProgress;
 
 @end
 
@@ -25,19 +26,35 @@ NSString* const APIURL = @"http://api.content.mts.intech-global.com/public/marke
     self = [super init];
     if (self)
     {
-        _delegate = delegate;
-        _queue = [[NSOperationQueue alloc] init];
-        _queue.name = @"Request queue";
-        _melodies = [[NSArray alloc] init];
+        self.delegate = delegate;
+        self.queue = [[NSOperationQueue alloc] init];
+        self.queue.name = @"Request queue";
+        self.melodies = [[NSArray alloc] init];
+        self.requestInProgress = NO;
         [self requestMelodiesFrom:0];
     }
     return self;
 }
 
+- (NSInteger)melodiesCount
+{
+    return self.melodies.count;
+}
+
+- (NSDictionary*)melodyForIndex:(NSInteger)index
+{
+    if (self.melodies.count - index < 10)
+        [self requestMelodiesFrom:self.melodies.count];
+    return [self.melodies objectAtIndex:index];
+}
+
 - (void)requestMelodiesFrom:(NSInteger)from
 {
+    if (self.requestInProgress)
+        return;
+    self.requestInProgress = YES;
     NSLog(@"requesting melodies from %ld", (unsigned long)from);
-    const NSInteger limit = 20;
+    const NSInteger limit = 200;
     
     NSString* requestString = [NSString stringWithFormat:@"%@?limit=%ld&from=%ld", APIURL, (long)limit, (long)from];
     
@@ -45,31 +62,27 @@ NSString* const APIURL = @"http://api.content.mts.intech-global.com/public/marke
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
 #warning todo: process connection error
     [NSURLConnection sendAsynchronousRequest:request
-                                       queue:_queue
+                                       queue:self.queue
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                               NSLog(@"received data length %lu", (unsigned long)data.length);
-                               NSError* error = nil;
-                               NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-                               NSArray* melodies = [json objectForKey:@"melodies"];
-                               _melodies = [_melodies arrayByAddingObjectsFromArray:melodies];
-                               NSLog(@"_melodies count %ld", (unsigned long)_melodies.count);
-                               [self performSelectorOnMainThread:@selector(notifyDelegateOnNewMelodies) withObject:nil waitUntilDone:NO];
+                               [self appendReceivedData:data from:from];
+                               self.requestInProgress = NO;
                            }];
+}
+
+- (void)appendReceivedData:(NSData*)data from:(NSInteger)from
+{
+    NSLog(@"received data length %lu", (unsigned long)data.length);
+    NSError* error = nil;
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+    NSArray* melodies = [json objectForKey:@"melodies"];
+    self.melodies = [self.melodies arrayByAddingObjectsFromArray:melodies];
+    NSLog(@"_melodies count %ld", (unsigned long)self.melodies.count);
+    [self performSelectorOnMainThread:@selector(notifyDelegateOnNewMelodies) withObject:nil waitUntilDone:NO];
 }
 
 - (void)notifyDelegateOnNewMelodies
 {
-    [_delegate onReceiveNewMelodies];
-}
-
-- (NSInteger)melodiesCount
-{
-    return _melodies.count;
-}
-
-- (NSDictionary*)melodyForIndex:(NSInteger)index
-{
-    return [_melodies objectAtIndex:index];
+    [self.delegate onReceiveNewMelodies];
 }
 
 @end
