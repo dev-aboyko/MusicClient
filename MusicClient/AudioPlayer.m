@@ -39,7 +39,6 @@
 
 - (void)playURL:(NSString *)url
 {
-    NSLog(@"audio player play url %@", url);
     [self stop];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSData* audioData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
@@ -47,7 +46,6 @@
         _player = [[AVAudioPlayer alloc] initWithData:audioData error:&error];
         if (_player != nil)
         {
-            NSLog(@"_player starts");
             [_player prepareToPlay];
             [_player play];
         }
