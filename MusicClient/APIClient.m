@@ -18,6 +18,7 @@ NSInteger requestLimit = 20;
 @property (nonatomic, strong) NSOperationQueue* queue;
 @property (atomic, strong) NSArray* melodies;
 @property (atomic) BOOL requestInProgress;
+@property (atomic) BOOL stopRequesting;
 
 @end
 
@@ -33,6 +34,7 @@ NSInteger requestLimit = 20;
         self.queue.name = @"Request queue";
         self.melodies = [[NSArray alloc] init];
         self.requestInProgress = NO;
+        self.stopRequesting = NO;
         [self requestMelodiesFrom:0];
     }
     return self;
@@ -52,7 +54,7 @@ NSInteger requestLimit = 20;
 
 - (void)requestMelodiesFrom:(NSInteger)from
 {
-    if (self.requestInProgress)
+    if (self.requestInProgress || self.stopRequesting)
         return;
     self.requestInProgress = YES;
     
@@ -80,6 +82,11 @@ NSInteger requestLimit = 20;
     NSError* error = nil;
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
     NSArray* melodies = [json objectForKey:@"melodies"];
+    if (melodies.count < requestLimit)
+    {
+        self.stopRequesting = YES;
+        NSLog(@"stop requesting");
+    }
     self.melodies = [self.melodies arrayByAddingObjectsFromArray:melodies];
     [self performSelectorOnMainThread:@selector(notifyDelegateOnNewMelodies) withObject:nil waitUntilDone:NO];
 }
